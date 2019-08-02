@@ -1,0 +1,39 @@
+openapi: 3.0.1
+info:
+  title: Example-API to demonstrate "OAS first" with connexion
+  description: "Part of a series for demonstrating connexion and Swagger first (i.e. OAS first)
+
+    1. Part 1: Running the API with documentation through swagger-ui and an empty GET-operation
+    Swagger-UI is found on http://localhost:8080/ui/
+
+    2. THIS --> Part 2: Adding a response to the GET-operation
+
+    3. Part 3: Adding specification of schema for the response from the GET-operation
+
+    4. Part 3-fail: Fails when respons does not comply with schema
+
+    5. Part 4: Adding a POST-operation
+
+    6. Part 5: Adding validation of input to POST-operation through specification of schema"
+  version: 0.0.2
+servers:
+  - url: 'http://localhost:8080'
+    description: Development server
+paths:
+  /bikes:
+    get:
+      operationId: connexion-demo2.get_data
+      summary: Returns a list of different bikes
+      description: No specification of response, no example, no validation
+      responses:
+        '200':
+          description: A list of bikes
+          content:
+            application/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+
+

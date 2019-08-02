@@ -1,0 +1,64 @@
+openapi: 3.0.1
+info:
+  title: Example-API to demonstrate "OAS first" with connexion
+  description: "Part of a series for demonstrating connexion and Swagger first (i.e. OAS first)
+
+    1. Part 1: Running the API with documentation through swagger-ui and an empty GET-operation
+    Swagger-UI is found on http://localhost:8080/ui/
+
+    2. Part 2: Adding a response to the GET-operation
+
+    3. Part 3: Adding specification of schema for the response from the GET-operation
+
+    4. Part 3-fail: Fails when respons does not comply with schema
+
+    5. Part 4: Adding a POST-operation
+
+    6. THIS --> Part 5: Adding validation of input to POST-operation through specification of schema"
+  version: 0.0.5
+servers:
+  - url: 'http://localhost:8080'
+    description: Development server
+paths:
+  /bikes:
+    get:
+      operationId: connexion-demo5.get_data
+      summary: Returns a list of different bikes
+      description: With specification of response, example, validation
+      responses:
+        '200':
+          description: A list of bikes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  bike:
+                    type: string
+                  score:
+                    type: integer
+              example: { 'mountain bike': 6 }
+
+    post:
+      operationId: connexion-demo5.post_data
+      summary: Add a bike and its score to the list
+      description: With specification of response, example, validation. Score is number from 0-10, where 10 is best. Try with score 11.
+      requestBody:
+        description: A JSON object with the name of the bike as string and score as integer from 0-10
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                bike:
+                  type: string
+                score:
+                  type: integer
+                  minimum: 0
+                  maximum: 10
+      responses:
+        201:
+          description: The new bike and a valid score has been added
+        409:
+          description: The bike already exists
