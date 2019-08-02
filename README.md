@@ -11,7 +11,7 @@ the demo within reasonable time, which really says a lot about how easy it is :-
 The demo contains six "levels" of an API and its documentation. In the first part it is only about getting the
 Swagger-UI for your API up and running, and then gradually adding functionality to the API.
 
-##Installing connexion and running the demo
+## Installing connexion and running the demo
 
 To run the demo, you (obviously) need to have the connexion-module
 [installed](https://connexion.readthedocs.io/en/latest/quickstart.html#installing-it):
